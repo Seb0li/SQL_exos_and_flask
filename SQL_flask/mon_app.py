@@ -5,12 +5,13 @@ from wtforms import validators
 import re
 import bleach.sanitizer
 import mysql.connector
+import os
 
 db = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="sebroot",
-    database="sqlform"
+    user=os.getenv('DB_USER'),   # user = seb
+    password=os.getenv('DB_PASSWORD'), # pass = sebroot
+    database=os.getenv('DB_NAME') # name = sqlform
 )
 
 app = Flask(__name__)
